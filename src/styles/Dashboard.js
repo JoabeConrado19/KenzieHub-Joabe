@@ -93,37 +93,33 @@ export const DashboardStyles = styled.div`
   .ul-Container > ul > li > div > img {
     margin-right: 18px;
   }
-  .ModalHeader{
+  .ModalHeader {
     display: flex;
     justify-content: space-between;
-    
   }
   @media (max-width: 751px) {
     .UserContainer {
-    height: 98px;
-    border-bottom: 1px solid #212529;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-around;
-    flex-direction: column;
+      height: 98px;
+      border-bottom: 1px solid #212529;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-around;
+      flex-direction: column;
+    }
+    header {
+      height: 72px;
+      border-bottom: 1px solid #212529;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 50px;
+    }
+    .FormUpper {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 110px;
+    }
   }
-  header {
-    height: 72px;
-    border-bottom: 1px solid #212529;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 50px;
-  }
-  .FormUpper {
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 110px;
-  }
-  
-    
-  }
-
 `;

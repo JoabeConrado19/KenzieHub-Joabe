@@ -29,26 +29,34 @@ export const Register = () => {
     contact: yup.string().required("Telefone obrigatório"),
   });
   const navigate = useNavigate();
-  const {register,handleSubmit,formState: { errors },} = useForm({resolver: yupResolver(formSchema),});
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(formSchema) });
   const onSubmitFunction = (data) => {
     delete data.password2;
     api
-      .post("/users", data
-      )
+      .post("/users", data)
       .then((response) => {
         if (response.status === 201) {
-          toast.success("Sucesso, Redirecionando!", {autoClose: 3000,});
+          toast.success("Sucesso, Redirecionando!", { autoClose: 3000 });
           setTimeout(() => {
             navigate("/");
           }, 3000);
+        } else {
+          toast.error("Erro de servidor, tente novamente mais tarde.");
         }
-        else{toast.error("Erro de servidor, tente novamente mais tarde.")}
-        
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.request.status) {
+          console.log("a");
+          toast.error("Algo deu errado, verifique as informações.");
+        }
       });
-
-   
   };
-  
+
   return (
     <RegisterForm>
       <div className="RegisterTitle">
@@ -60,6 +68,7 @@ export const Register = () => {
             navigate("/");
           }}
         >
+          {" "}
           Voltar
         </button>
       </div>
@@ -77,7 +86,11 @@ export const Register = () => {
           <input placeholder="Digite seu Nome" {...register("name")}></input>
           <StyledTitle Title="span-error">{errors.name?.message}</StyledTitle>
           <label>Email</label>
-          <input placeholder="Digite seu Email" {...register("email")} type="email"></input>
+          <input
+            placeholder="Digite seu Email"
+            {...register("email")}
+            type="email"
+          ></input>
           <StyledTitle Title="span-error">{errors.email?.message}</StyledTitle>
           <label>Senha</label>
           <input
@@ -85,14 +98,18 @@ export const Register = () => {
             {...register("password")}
             type="password"
           ></input>
-          <StyledTitle Title="span-error">{errors.password?.message}</StyledTitle>
+          <StyledTitle Title="span-error">
+            {errors.password?.message}
+          </StyledTitle>
           <label>Confirmar Senha</label>
           <input
             placeholder="Digite novamente sua Senha"
             {...register("password2")}
             type="password"
           ></input>
-          <StyledTitle Title="span-error">{errors.password2?.message}</StyledTitle>
+          <StyledTitle Title="span-error">
+            {errors.password2?.message}
+          </StyledTitle>
           <label>Bio</label>
           <input placeholder="Fale sobre você" {...register("bio")}></input>
           <StyledTitle Title="span-error">{errors.bio?.message}</StyledTitle>
@@ -101,7 +118,9 @@ export const Register = () => {
             placeholder="Opção de contato"
             {...register("contact")}
           ></input>
-          <StyledTitle Title="span-error">{errors.contact?.message}</StyledTitle>
+          <StyledTitle Title="span-error">
+            {errors.contact?.message}
+          </StyledTitle>
           <label>Selecionar módulo </label>
           <select {...register("course_module")}>
             <option value="Primeiro Módulo (Introdução ao Frontend)">

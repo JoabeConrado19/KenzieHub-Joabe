@@ -20,23 +20,21 @@ export const RegisterForm = styled.div`
     padding: 20px;
   }
 
-  .FormContainer >button{
-
-width: 100%;
-height: 48px;
-background: #868E96;
-border: 1.2182px solid #868E96;
-border-radius: 4px;
-font-family: 'Inter';
-font-weight: 500;
-font-size: 16px;
-line-height: 26px;
-color: #F8F9FA;
+  .FormContainer > button {
+    width: 100%;
+    height: 48px;
+    background: #868e96;
+    border: 1.2182px solid #868e96;
+    border-radius: 4px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #f8f9fa;
   }
 
   .Title {
     margin: 17px 0 15px 0;
-
   }
   .Title2 {
     margin: -10px 0px -5px;
@@ -67,7 +65,7 @@ color: #F8F9FA;
     width: 90%;
     height: 34px;
     background: #343b41;
-    
+
     border-radius: 4px;
     margin: 10px 0 10px;
     outline: 0;
@@ -91,59 +89,62 @@ color: #F8F9FA;
     transition: 0.5s ease;
   }
   .RegisterForm > button:hover {
-
     background-color: white;
     border: 1.2182px solid white;
-    color:#ff577f;
-    
+    color: #ff577f;
   }
-  .RegisterSpan{
-    font-family: 'Inter';
-font-weight: 600;
-font-size: 12px;
-color: #868E96;
-cursor: pointer;
-margin-top:-10px;
-margin-bottom: -10px;
-
+  .RegisterSpan {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 12px;
+    color: #868e96;
+    cursor: pointer;
+    margin-top: -10px;
+    margin-bottom: -10px;
   }
- 
-  .RegisterTitle{
 
+  .RegisterTitle {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 384px;
   }
-  .RegisterTitle > button{
-
-width: 67.49px;
-height: 40.11px;
-background: #212529;
-border-radius: 4px;
-font-family: 'Inter';
-font-weight: 600;
-font-size: 12px;
-text-align: center;
-color: #F8F9FA;
-flex: none;
-order: 0;
-flex-grow: 0;
-cursor: pointer;
+  .RegisterTitle > button {
+    width: 67.49px;
+    height: 40.11px;
+    background: #212529;
+    border-radius: 4px;
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+    color: #f8f9fa;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    cursor: pointer;
   }
   .RegisterForm > select {
     padding: 0px 16.2426px;
-  gap: 10.15px;
-  width: 100%;
-  height: 34px;
-  background: #343B41;
-  border: 1.2182px solid #343B41;
-  border-radius: 4px;
-  font-family: 'Inter';
-  font-weight: 400;
-  font-size: 16.2426px;
-  color: #868E96;
-  margin: 10px 0 15px;
+    gap: 10.15px;
+    width: 100%;
+    height: 34px;
+    background: #343b41;
+    border: 1.2182px solid #343b41;
+    border-radius: 4px;
+    font-family: "Inter";
+    font-weight: 400;
+    font-size: 16.2426px;
+    color: #868e96;
+    margin: 10px 0 15px;
   }
 
+  @media (max-width: 378px) {
+    .FormContainer {
+      width: 100%;
+    }
+    .RegisterTitle {
+      width: 100%;
+    }
+  }
 `;

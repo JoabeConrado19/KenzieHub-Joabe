@@ -42,19 +42,19 @@ export const StyledTitle = styled.h1`
           font-size: 12px;
           color: #868e96;
         `;
-        case "span-error":
+      case "span-error":
         return css`
           font-family: "Inter";
           font-weight: 300;
           font-size: 12px;
           color: red;
         `;
-        case "spanBtn":
+      case "spanBtn":
         return css`
           font-family: "Inter";
           font-weight: 400;
           font-size: 16px;
-          color: #868E96;
+          color: #868e96;
           cursor: pointer;
         `;
     }

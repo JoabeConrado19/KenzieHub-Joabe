@@ -20,19 +20,18 @@ export const LoginForm = styled.div`
     padding: 20px;
   }
 
-  .FormContainer >button{
-
-width: 100%;
-height: 48px;
-background: #868E96;
-border: 1.2182px solid #868E96;
-border-radius: 4px;
-font-family: 'Inter';
-font-weight: 500;
-font-size: 16px;
-line-height: 26px;
-color: #F8F9FA;
-cursor: pointer;
+  .FormContainer > button {
+    width: 100%;
+    height: 48px;
+    background: #868e96;
+    border: 1.2182px solid #868e96;
+    border-radius: 4px;
+    font-family: "Inter";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 26px;
+    color: #f8f9fa;
+    cursor: pointer;
   }
 
   .Title {
@@ -92,19 +91,21 @@ cursor: pointer;
     cursor: pointer;
   }
   .LoginForm > button:hover {
-
     background-color: white;
     border: 1.2182px solid white;
-    color:#ff577f;
-    
+    color: #ff577f;
   }
-  .LoginSpan{
-    font-family: 'Inter';
-font-weight: 600;
-font-size: 12px;
-color: #868E96;
-cursor: pointer;
-margin-top:15px;
-
+  .LoginSpan {
+    font-family: "Inter";
+    font-weight: 600;
+    font-size: 12px;
+    color: #868e96;
+    cursor: pointer;
+    margin-top: 15px;
+  }
+  @media (max-width: 378px) {
+    .FormContainer {
+      width: 100%;
+    }
   }
 `;
