@@ -56,7 +56,6 @@ export const Register = () => {
         }
       });
   };
-
   return (
     <RegisterForm>
       <div className="RegisterTitle">
@@ -72,7 +71,6 @@ export const Register = () => {
           Voltar
         </button>
       </div>
-
       <main className="FormContainer">
         <StyledTitle className="Title2" Title="two">
           Crie sua conta

@@ -141,7 +141,7 @@ export const RegisterForm = styled.div`
 
   @media (max-width: 378px) {
     .FormContainer {
-      width: 100%;
+      width:85%;
     }
     .RegisterTitle {
       width: 100%;

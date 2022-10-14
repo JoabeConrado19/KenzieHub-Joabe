@@ -105,7 +105,7 @@ export const LoginForm = styled.div`
   }
   @media (max-width: 378px) {
     .FormContainer {
-      width: 100%;
+      width: 80%;
     }
   }
 `;
