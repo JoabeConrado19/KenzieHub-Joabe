@@ -1,36 +1,16 @@
+import { useContext } from "react";
+import  UserProvider  from "../contexts/UserContext"; 
+import { Context } from "../contexts/UserContext";
 import { StyledTitle } from "../styles/typography";
 import { LoginForm } from "../styles/LoginPage";
-import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-import api from "../services/api";
-import * as yup from "yup";
-import { useForm } from "react-hook-form";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+
+
 export const LoginPage = () => {
-  const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
-  function Logar(data) {
-    api
-      .post("/sessions", data)
-      .then((response) => {
-        console.log(response);
-        if (response?.status === 200) {
-          toast.success("Sucesso, Redirecionando!", { autoClose: 3000 });
-          setTimeout(() => {
-            navigate("/dashboard");
-            localStorage.setItem("@KenzieHub_Joabe", response.data.token);
-          }, 3000);
-        }
-      })
-      .catch((err) => {
-        if (err.request.status) {
-          console.log("a");
-          toast.error("Algo deu errado, verifique as informações.");
-        }
-      });
-  }
+ const { navigate, register, handleSubmit, Logar } = useContext(Context)
+
 
   return (
     <LoginForm>

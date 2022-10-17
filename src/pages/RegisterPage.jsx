@@ -5,57 +5,21 @@ import api from "../services/api";
 import { useForm } from "react-hook-form";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useEffect } from "react";
+import { useContext } from "react";
+import { Context } from "../contexts/UserContext";
 
 export const Register = () => {
-  const formSchema = yup.object().shape({
-    name: yup.string().required("Nome obrigatório"),
-    email: yup.string().required("Email obrigatório").email("Email inválido"),
-    password: yup
-      .string()
-      .required("Senha Obrigatória")
-      .min(8, "Senha muito curta - Mínimo de 8 carácteres.")
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Senha fraca, mínimo de 8 caracteres, deve conter ao menos uma letra maúscula e um caráctere especial."
-      ),
-    password2: yup
-      .string()
-      .required("Campo Obrigatório")
-      .oneOf([yup.ref("password")], "Campos não coincidem"),
-    bio: yup.string().required("Bio Obrigatória"),
-    contact: yup.string().required("Telefone obrigatório"),
-  });
-  const navigate = useNavigate();
+  const { formSchema, navigate, RegisteronSubmitFunction } = useContext(Context);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(formSchema) });
-  const onSubmitFunction = (data) => {
-    delete data.password2;
-    api
-      .post("/users", data)
-      .then((response) => {
-        if (response.status === 201) {
-          toast.success("Sucesso, Redirecionando!", { autoClose: 3000 });
-          setTimeout(() => {
-            navigate("/");
-          }, 3000);
-        } else {
-          toast.error("Erro de servidor, tente novamente mais tarde.");
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        if (err.request.status) {
-          console.log("a");
-          toast.error("Algo deu errado, verifique as informações.");
-        }
-      });
-  };
+  
+
   return (
     <RegisterForm>
       <div className="RegisterTitle">
@@ -78,7 +42,7 @@ export const Register = () => {
         <span className="RegisterSpan">Rápido e grátis, vamos nessa</span>
         <form
           className="RegisterForm"
-          onSubmit={handleSubmit(onSubmitFunction)}
+          onSubmit={handleSubmit(RegisteronSubmitFunction)}
         >
           <label>Nome</label>
           <input placeholder="Digite seu Nome" {...register("name")}></input>
