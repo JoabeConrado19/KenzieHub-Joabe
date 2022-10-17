@@ -1,16 +1,18 @@
 import { useContext } from "react";
-import  UserProvider  from "../contexts/UserContext"; 
+import UserProvider from "../contexts/UserContext";
 import { Context } from "../contexts/UserContext";
 import { StyledTitle } from "../styles/typography";
 import { LoginForm } from "../styles/LoginPage";
 import "react-toastify/dist/ReactToastify.css";
-
-
-
+import { useEffect } from "react";
 
 export const LoginPage = () => {
- const { navigate, register, handleSubmit, Logar } = useContext(Context)
+  const { navigate, register, handleSubmit, Logar, autoLogin, token } =
+    useContext(Context);
 
+  useEffect(() => {
+    autoLogin();
+  }, []);
 
   return (
     <LoginForm>

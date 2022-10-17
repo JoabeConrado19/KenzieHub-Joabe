@@ -86,8 +86,8 @@ export const LandingPage = () => {
   }
   useEffect(() => {
     let token = localStorage.getItem("@KenzieHub_Joabe");
-    if(token == undefined){
-      navigate("/")
+    if (token == undefined) {
+      navigate("/");
     }
     api
       .get("/profile", {
@@ -100,9 +100,9 @@ export const LandingPage = () => {
         SetName(name[0]);
         SetModule(response.data.course_module);
         SetTecs(response.data.techs);
-      }).catch((err)=>{
-        localStorage.clear()
-
+      })
+      .catch((err) => {
+        localStorage.clear();
       });
   }, []);
 
