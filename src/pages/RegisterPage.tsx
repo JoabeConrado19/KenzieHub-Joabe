@@ -10,15 +10,26 @@ import { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "../contexts/UserContext";
 
+interface IErrors{
+  errors: string | Array<string>, value: any, path: string;
+  name: string;
+  email: string;
+  password: string;
+  password2: string;
+  bio: string;
+  contact: string;
+  course_module: string;
+}
+
 export const Register = () => {
-  const { formSchema, navigate, RegisteronSubmitFunction } = useContext(Context);
+  const { formSchema, navigate, RegisteronSubmitFunction } =
+    useContext(Context);
 
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ resolver: yupResolver(formSchema) });
-  
+  } = useForm<IErrors>({ resolver: yupResolver(formSchema) });
 
   return (
     <RegisterForm>

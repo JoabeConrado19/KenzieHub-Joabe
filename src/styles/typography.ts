@@ -1,12 +1,17 @@
 /* eslint-disable default-case */
 import styled, { css } from "styled-components";
 
-export const StyledTitle = styled.h1`
+interface iStyledTitleProps{
+  Title: string;
+}
+
+
+export const StyledTitle = styled.h1<iStyledTitleProps>`
   ${({ Title }) => {
     switch (Title) {
       case "one":
         return css`
-          font-size: 26px;
+          font-size: 26+'px';
           color: #ff577f;
           font-weight: 800;
         `;

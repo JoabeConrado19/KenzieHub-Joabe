@@ -1,15 +1,37 @@
 import { DashboardStyles } from "../styles/Dashboard";
 import { StyledTitle } from "../styles/typography";
-import Vector from "../assets/Vector.svg";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../services/api";
-import { ToastContainer, toast } from "react-toastify";
-import { set } from "react-hook-form";
+import { toast } from "react-toastify";
 import Modal from "react-modal";
 import { useForm } from "react-hook-form";
+import { StringSchema } from "yup";
+import Vector from "../assets/Vector.svg";
+
+
 
 Modal.setAppElement("#root");
+
+interface ICriarPost {
+  title?: string;
+  status?: string;
+  email?: string;
+  data?:object;
+  criarPost?:object;
+}
+
+interface IID{
+  id: string;
+}
+
+interface IPost{
+  title:string;
+  status: string;
+  id:string;
+  Vector:any;
+
+}
 
 export const LandingPage = () => {
   const { register, handleSubmit } = useForm();
@@ -26,7 +48,7 @@ export const LandingPage = () => {
   function handleCloseModal() {
     setModalOpen(false);
   }
-  function criarPost(data) {
+  function criarPost(data:ICriarPost) {
     let token = localStorage.getItem("@KenzieHub_Joabe");
     delete data.email;
     api
@@ -50,7 +72,8 @@ export const LandingPage = () => {
         }
       });
   }
-  const ModalStyles = {
+ 
+  const ModalStyles:ReactModal.Styles = {
     overlay: {
       position: "fixed",
       top: 0,
@@ -65,10 +88,10 @@ export const LandingPage = () => {
     navigate("/");
     localStorage.clear();
   }
-  function Excluir(element) {
+  function Excluir(element: string) {
     let token = localStorage.getItem("@KenzieHub_Joabe");
-    const ListaComRemovido = Tecs.filter((item) => {
-      return item.id != element;
+    const ListaComRemovido = Tecs.filter((item:IID) => {
+      return item.id !== element;
     });
     api
       .delete(`/users/techs/${element}`, {
@@ -156,7 +179,7 @@ export const LandingPage = () => {
       </div>
       <div className="ul-Container">
         <ul className="li-Container">
-          {Tecs.map((element) => (
+          {Tecs.map((element:IPost) => (
             <li>
               <StyledTitle className="Title-li" Title="four">
                 {element.title}

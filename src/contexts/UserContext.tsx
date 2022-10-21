@@ -4,10 +4,45 @@ import api from "../services/api";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
+import React from "react";
+import { Schema } from "inspector";
 
-export const Context = createContext({});
+interface IChildren {
+  children: React.ReactNode;
+}
+interface IRegister{
 
-const UserProvider = ({ children }) => {
+  password2?: string;
+  password: string;
+  name: string;
+  bio:string;
+  contact:string;
+  course_module:string;
+
+  
+}
+
+interface IContextFunctions{
+  navigate: Function;
+  useNavigate: Function;
+  register: Function;
+  handleSubmit:Function;
+  Logar: Function;
+  formSchema: any;
+  RegisteronSubmitFunction: any ;
+  token?: string | null;
+  autoLogin:Function;
+
+}
+interface IRegister{
+  register: Function;
+  handleSubmit:Function;
+
+}
+
+export const Context = createContext({} as IContextFunctions);
+
+const UserProvider = ({ children }:IChildren) => {
   let token = localStorage.getItem("@KenzieHub_Joabe");
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
@@ -31,7 +66,9 @@ const UserProvider = ({ children }) => {
     contact: yup.string().required("Telefone obrigatório"),
   });
 
-  const RegisteronSubmitFunction = (data) => {
+  
+
+  const RegisteronSubmitFunction = (data:IRegister) => {
     delete data.password2;
     api
       .post("/users", data)
@@ -70,7 +107,12 @@ const UserProvider = ({ children }) => {
     }
   }
 
-  function Logar(data) {
+  interface IData {
+    email: string;
+    password: string;
+  }
+
+  function Logar(data:IData) {
     api
       .post("/sessions", data)
       .then((response) => {
